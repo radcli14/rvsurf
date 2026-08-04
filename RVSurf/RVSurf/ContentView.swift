@@ -22,8 +22,9 @@ struct ContentView: View {
     // - MARK: - Initialization
     
     private func startSession() async {
+        // TODO: Determine which tracking and scene understanding are applicable to a simple demo
         let config = SpatialTrackingSession.Configuration(
-            tracking: [.camera, .plane, .object, .world],
+            tracking: [.camera, .plane, .object, .world, .body, .face, .image],
             sceneUnderstanding: [.occlusion, .physics, .collision, .shadow]
         )
         await session.run(config)
