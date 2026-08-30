@@ -54,9 +54,10 @@ extension RealityViewCameraContent {
         print("subscribing to plane detection")
         let _ = subscribe(
             to: ComponentEvents.DidAdd.self,
-            componentType: AnchoringComponent.self
+            componentType: SceneUnderstandingComponent.self
         ) { event in
-            print("anchor event", event)
+            guard let scene = event.entity.components[SceneUnderstandingComponent.self] else { return }
+            print("anchor event", scene, scene.entityType, event.entity)
         }
     }
     
